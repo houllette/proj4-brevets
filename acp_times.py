@@ -26,11 +26,6 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control open time.
        This will be in the same time zone as the brevet start time.
     """
-    if control_dist_km < 0 or brevet_dist_km < 0:
-        return "Please enter positive distance value"
-    if control_dist_km > (brevet_dist_km * 1.1):
-        #FIXME: do something
-        print("hello")
 
     if control_dist_km >= brevet_dist_km:
         control_dist_km = brevet_dist_km
@@ -40,7 +35,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     minutes = round(time[0] * 60)
     open_time = arrow.get(brevet_start_time).replace(hours=+hours, minutes=+minutes)
 
-    return str(open_time)
+    return open_time.isoformat()
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
@@ -55,8 +50,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control close time.
        This will be in the same time zone as the brevet start time.
     """
-    if control_dist_km < 0 or brevet_dist_km < 0:
-        return 'Please enter positive distance value'
+
     if control_dist_km == 0:
         close_time = brevet_start_time.replace(hours=+1)
     elif control_dist_km >= brevet_dist_km:
@@ -69,4 +63,4 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         minutes = round(time[0] * 60)
         close_time = arrow.get(brevet_start_time).replace(hours=+hours, minutes=+minutes)
 
-    return str(close_time)
+    return close_time.isoformat()
