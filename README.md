@@ -25,7 +25,7 @@ Locations may be optionally entered.
 ## Installation & Deployment
 
 ```bash
-git clone https://github.com/TsFreddie/proj4-brevets.git
+git clone https://github.com/houllette/proj4-brevets.git
 cd proj4-brevets
 bash ./configure
 make run
